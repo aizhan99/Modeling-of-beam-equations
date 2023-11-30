@@ -1,0 +1,21 @@
+% Cantilever Beam Analysis using Euler-Bernoulli Beam Theory
+
+% Define parameters
+L = 5;           % Length of the beam (in meters)
+E = 2.1e11;      % Young's modulus of the material (in Pa)
+I = 4.5e-5;      % Moment of inertia of the beam (in m^4)
+w = 1000;        % Uniformly distributed load on the beam (in N/m)
+
+% Discretize the beam
+x = linspace(0, L, 100);  % Divide the beam into 100 segments
+
+% Calculate the deflection using Euler-Bernoulli beam theory
+delta = (w * L^4) / (8 * E * I) * (x.^2 - 2 * L * x + L^2);
+
+% Plot the deflection profile
+figure;
+plot(x, delta, 'b-', 'LineWidth', 2);
+title('Cantilever Beam Deflection (Euler-Bernoulli Beam Theory)');
+xlabel('Position along the beam (m)');
+ylabel('Deflection (m)');
+grid on;
